@@ -1,0 +1,54 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="Default.master.cs" Inherits="_Default" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head id="Head1" runat="server">
+    <title>Symetrix</title>
+    <style type="text/css">
+        .auto-style1 {
+            margin-left: 40px;
+        }
+    </style>
+</head>
+<body style="height: 357px; margin-bottom: 235px;">
+    <form id="form1" runat="server" style="background-color: #C0C0C0; height: 82px; width: 1310px; margin-left: 0px;">
+    <div style="padding: inherit; height: 217px; margin-left: 0px; width: 1313px;" class="auto-style1">  
+       &nbsp;&nbsp;&nbsp;
+    
+        &nbsp;
+            
+        <asp:Image ID="Image1" runat="server" ImageUrl="~/Symetrix-logo.png" style="margin-left: 4px; margin-top: 0px; margin-bottom: 0px" Height="72px" Width="266px" />
+        <asp:Label ID="Label3" runat="server" BorderStyle="None" Font-Bold="True" Font-Names="Segoe UI" Font-Overline="False" Font-Size="X-Large" Font-Strikeout="False" Font-Underline="False" ForeColor="#000066" style="margin-left: 242px; margin-right: 114px; margin-top: 0px; margin-bottom: 0px" Text="Symetrix 1.0 - Integrador"></asp:Label>
+       <asp:Label ID="Label2" runat="server" Text="Usuário = " Font-Names="Segoe UI" Font-Size="Medium"></asp:Label>
+        <asp:Label ID="Label1" runat="server" Text="Label" Font-Bold="True" Font-Size="Medium" Font-Names="Segoe UI"></asp:Label>
+    
+        <asp:Button ID="btnLogout" runat="server" Text="Sair" OnClick="btnLogout_Click1" Height="25px" style="margin-left: 7px; margin-top: 3px;" BackColor="#000066" BorderStyle="None" Font-Names="Segoe UI" ForeColor="White" Width="58px" Font-Size="Medium" />
+    
+        <br />
+        <asp:Menu ID="Menu" runat="server" Layout="Horizontal" CssClass="static" Font-Names="Segoe UI" Orientation="Horizontal" RenderingMode="List" BackColor="#FFFF99" BorderColor="#000099" BorderStyle="Solid" BorderWidth="5px" DynamicVerticalOffset="10" Height="30px" Width="1300px" >
+            <Items>                
+                <asp:MenuItem Text="Relatórios" Value="mnuRel" >
+                    <asp:MenuItem Text="Faturamento x Entrega de Concreto" Value="FatEnt" NavigateUrl="~/Report/FadProdCon.aspx"></asp:MenuItem>
+                    <asp:MenuItem Text="Comissão por funcionário" Value="Comis"></asp:MenuItem>
+                    <asp:MenuItem Text="Entrega efetiva de concreto" Value="EntEfet"></asp:MenuItem>
+                </asp:MenuItem>
+            </Items>
+        </asp:Menu>    
+        <br />
+        &nbsp;&nbsp;
+        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+        </asp:ContentPlaceHolder>
+
+         &nbsp;&nbsp;<asp:Panel ID="Panel1" runat="server" BackColor="Silver" Height="29px">
+            <div style="width: 298px; height: 20px; margin-left: 538px; margin-top: 5px; margin-bottom: 30px; background-color: #C0C0C0;">
+                <asp:Label ID="Label4" runat="server" Font-Bold="False" Font-Names="Segoe UI" Text="Symetrix - Replicador de dados"></asp:Label>
+            </div>
+        </asp:Panel>
+&nbsp;</div>  
+    </form>
+</body>
+</html>
+
+
+

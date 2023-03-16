@@ -1,0 +1,92 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="IntegNeomixDataSet" targetNamespace="http://tempuri.org/IntegNeomixDataSet.xsd" xmlns:mstns="http://tempuri.org/IntegNeomixDataSet.xsd" xmlns="http://tempuri.org/IntegNeomixDataSet.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Web.config" AppSettingsPropertyName="SymetrixConn" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="SymetrixConn (Web.config)" ParameterPrefix="@" PropertyReference="AppConfig.System.Configuration.ConfigurationManager.0.ConnectionStrings.SymetrixConn.ConnectionString" Provider="System.Data.SqlClient" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="FATPRDCONTableAdapter" Name="FATPRDCON">
+            <MainSource>
+              <DbSource ConnectionRef="SymetrixConn (Web.config)" DbObjectName="IntegNeomix.dbo.FATPRDCON" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT FNF_NUM, FNF_SERIE, FNF_EMISSAO, FNF_TOTAL, FCC_RAZAOSOC, CLIENTES_FCC_LOJA, PSL_ID, PSL_DATA, PMOT_NOME, PSL_STATUS FROM dbo.FATPRDCON</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="FNF_NUM" DataSetColumn="FNF_NUM" />
+              <Mapping SourceColumn="FNF_SERIE" DataSetColumn="FNF_SERIE" />
+              <Mapping SourceColumn="FNF_EMISSAO" DataSetColumn="FNF_EMISSAO" />
+              <Mapping SourceColumn="FNF_TOTAL" DataSetColumn="FNF_TOTAL" />
+              <Mapping SourceColumn="FCC_RAZAOSOC" DataSetColumn="FCC_RAZAOSOC" />
+              <Mapping SourceColumn="CLIENTES_FCC_LOJA" DataSetColumn="CLIENTES_FCC_LOJA" />
+              <Mapping SourceColumn="PSL_ID" DataSetColumn="PSL_ID" />
+              <Mapping SourceColumn="PSL_DATA" DataSetColumn="PSL_DATA" />
+              <Mapping SourceColumn="PMOT_NOME" DataSetColumn="PMOT_NOME" />
+              <Mapping SourceColumn="PSL_STATUS" DataSetColumn="PSL_STATUS" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="IntegNeomixDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="False">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="FATPRDCON">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="FNF_NUM">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="9" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="FNF_SERIE">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="FNF_EMISSAO" type="xs:dateTime" />
+              <xs:element name="FNF_TOTAL" type="xs:double" minOccurs="0" />
+              <xs:element name="FCC_RAZAOSOC">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="60" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="CLIENTES_FCC_LOJA" type="xs:int" minOccurs="0" />
+              <xs:element name="PSL_ID" type="xs:int" />
+              <xs:element name="PSL_DATA" type="xs:dateTime" />
+              <xs:element name="PMOT_NOME">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="30" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="PSL_STATUS">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="20" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

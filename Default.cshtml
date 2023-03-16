@@ -1,0 +1,99 @@
+﻿@*@section Scripts {
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+}*@
+
+@{
+Layout = "~/_SiteLayout.cshtml";
+    Page.Title = "Symetrix";
+
+    int idUser = 0;
+    var UserName = "";
+    var password = "";
+    var lembreMe = false;
+    int grupo = 0;
+    var returnUrl = Request.QueryString["ReturnUrl"];
+        
+    if (returnUrl.IsEmpty()) {
+        // Some external UserName providers always require a return URL value
+        returnUrl = Href("~/");
+    }
+
+    // Validação de UserName, password
+    Validation.RequireField("UserName", "Usuário inválido.");
+    Validation.RequireField("password", "senha inválida");
+    Validation.Add("password",
+        Validator.StringLength(
+            maxLength: Int32.MaxValue,
+            minLength: 6,
+            errorMessage: "A senha deve possuir, no mínimo, 6 caracteres."));
+
+    // Se é uma requisição POST, valida e processa os dados
+    if (IsPost) {
+        AntiForgery.Validate();
+        // is this an external UserName request?
+        string provider = Request.Form["provider"];
+        if (!provider.IsEmpty()) {
+            OAuthWebSecurity.RequestAuthentication(provider, Href("~/Account/RegisterService", new { returnUrl }));
+            return;
+        } else { 
+            UserName = Request.Form["txtUserName"];
+            password = Request.Form["txtpassword"];
+            lembreMe = Request.Form["lembreMe"].AsBool();
+            login log = new login(idUser,UserName,password,grupo);
+            log.conect(UserName, password);
+            bool hasReturn = log.hasReturn;
+            
+            if (hasReturn == false)
+            {
+                ModelState.AddFormError("Usuário e/ou password inválido(s).");
+                UserName = "";
+                password = ""; 
+            } else {
+                Session["UserName"] = log.nome;
+                Session["UserId"] = log.idUser;
+                grupo = log.grupo;
+                if (grupo==1){ //grupo administradores
+                   Response.Redirect("~/Default_adm.aspx");  
+                }                 
+                else { //grupo operacional
+                   Response.Redirect("~/Default.aspx"); //default adm
+                }                
+            }                   
+            
+        }
+    }
+}
+
+<section id="UserNameForm">
+        <form method="post">
+        @AntiForgery.GetHtml()
+        @Html.ValidationSummary("Problemas com UserName.", excludeFieldErrors: true, htmlAttributes: null)
+    
+        <h1>@Page.Title</h1>
+            <fieldset>
+            <ol> 
+                <li class="UserName">
+                    <label for="UserName" @if (!ModelState.IsValidField("UserName"))
+                                       {<text>class="error-label"</text>}>Usuário</label>  
+                <input type="text" name="txtUserName" value="@UserName" @Validation.For("UserName") /><br />
+                @Html.ValidationMessage("UserName")          
+                
+                </li>
+                <li class="password">
+                    <label for="password" @if (!ModelState.IsValidField("password")) {<text>class="error-label"</text>}>Senha</label>
+                    <input type="password" name="txtpassword" value="@UserName" @Validation.For("UserName") /><br />
+                    @Html.ValidationMessage("password")
+                </li>
+                <li class="lembre-me">
+                    <input type="checkbox" id="lembreMe" name="lembreMe" value="true" checked="@lembreMe" />
+                    <label class="checkbox" for="lembreMe">Lembrar-me</label>
+                </li>
+            </ol>
+            <input type="submit" value="Acessar" class="submit" />
+        </fieldset>
+    </form>    
+</section>
+    
+
+
